@@ -114,7 +114,7 @@ python main.py
 ## 📜 License
 
 This project is based on a tutorial but adapted by Emmanuel Akinlusi.  
-You can choose an MIT license if you want.
+
 
 ---
 
