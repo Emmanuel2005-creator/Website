@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth-layout">
+  <section class="auth-story" aria-labelledby="story-title">
+    <span class="eyebrow light">{{ icon('spark') }} LESS NOISE. MORE CLARITY.</span>
+    <h1 id="story-title">Good ideas<br>deserve a <em>place.</em></h1>
+    <p>A passing thought. A fresh perspective. A plan for what's next. Keep it all together, right here.</p>
+    <img class="notebook-art" src="{{ url_for('static', filename='notebook.svg') }}" alt="" width="560" height="390">
+    <div class="story-footer"><span class="story-line"></span>Your mind, a little lighter.</div>
+  </section>
+  <section class="auth-form-panel" aria-labelledby="form-title">
+    <span class="form-kicker">YOUR PERSONAL NOTEBOOK</span>
+    {% block auth_form %}{% endblock %}
+    <p class="auth-privacy">{{ icon('lock') }} Your notes belong in your own space.</p>
+  </section>
+</div>
+<footer class="auth-footer"><span>A little space for your big ideas.</span><span>Thoughtfully simple. Always yours.</span></footer>
+{% endblock %}
