@@ -1,48 +1,15 @@
-{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
-content %}
-<form method="POST">
-  <h3 align="center">Sign Up</h3>
-  <div class="form-group">
-    <label for="email">Email Address</label>
-    <input
-      type="email"
-      class="form-control"
-      id="email"
-      name="email"
-      placeholder="Enter email"
-    />
-  </div>
-  <div class="form-group">
-    <label for="firstName">First Name</label>
-    <input
-      type="text"
-      class="form-control"
-      id="firstName"
-      name="firstName"
-      placeholder="Enter first name"
-    />
-  </div>
-  <div class="form-group">
-    <label for="password1">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="password1"
-      name="password1"
-      placeholder="Enter password"
-    />
-  </div>
-  <div class="form-group">
-    <label for="password2">Password (Confirm)</label>
-    <input
-      type="password"
-      class="form-control"
-      id="password2"
-      name="password2"
-      placeholder="Confirm password"
-    />
-  </div>
-  <br />
-  <button type="submit" class="btn btn-primary">Submit</button>
+{% extends 'auth_layout.html' %}
+{% block title %}Create an account{% endblock %}
+{% block auth_form %}
+<h2 id="form-title">Make room for ideas.</h2>
+<p class="form-intro">A calmer, clearer space starts here.</p>
+<form method="post" class="auth-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="field"><label for="firstName">First name</label><input type="text" id="firstName" name="firstName" autocomplete="given-name" minlength="2" maxlength="150" placeholder="What should we call you?" value="{{ request.form.get('firstName', '') }}" required></div>
+  <div class="field"><label for="email">Email address</label><input type="email" id="email" name="email" autocomplete="email" maxlength="150" placeholder="you@example.com" value="{{ request.form.get('email', '') }}" required></div>
+  <div class="field"><label for="password1">Password <span class="label-hint">At least 7 characters</span></label><input type="password" id="password1" name="password1" autocomplete="new-password" minlength="7" maxlength="1024" placeholder="Create a password" required></div>
+  <div class="field"><label for="password2">Confirm password</label><input type="password" id="password2" name="password2" autocomplete="new-password" minlength="7" maxlength="1024" placeholder="One more time" required></div>
+  <button class="button button-primary button-full" type="submit">Create your notebook {{ icon('arrow') }}</button>
 </form>
+<p class="form-switch">Already part of the story? <a href="{{ url_for('auth.login') }}">Log in</a></p>
 {% endblock %}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="390" viewBox="0 0 560 390" fill="none">
+<!-- Original illustration for Noted; lightweight and self-contained. -->
+<defs><linearGradient id="paper" x1="182" y1="60" x2="400" y2="345" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#eeedff"/></linearGradient><linearGradient id="cover" x1="140" y1="60" x2="400" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#a69aee"/><stop offset="1" stop-color="#7061c8"/></linearGradient></defs>
+<ellipse cx="287" cy="341" rx="192" ry="17" fill="#080f29" opacity=".09"/>
+<circle cx="282" cy="186" r="151" stroke="#b3a9ed" stroke-opacity=".25"/>
+<circle cx="282" cy="186" r="174" stroke="#b3a9ed" stroke-opacity=".12" stroke-dasharray="3 9"/>
+<g transform="rotate(-10 278 200)"><rect x="151" y="58" width="245" height="275" rx="17" fill="#121b34" opacity=".1"/><rect x="140" y="48" width="244" height="275" rx="13" fill="url(#cover)"/><rect x="157" y="48" width="233" height="268" rx="11" fill="url(#paper)"/><path d="M177 49v267" stroke="#dfdbf5" stroke-width="2"/><path d="M205 87h114" stroke="#4b426f" stroke-width="8" stroke-linecap="round"/><path d="M205 110h71" stroke="#a8a2bf" stroke-width="4" stroke-linecap="round"/>
+<rect x="201" y="140" width="18" height="18" rx="5" fill="#e3defa"/><path d="m206 149 3 3 6-7" stroke="#7865c6" stroke-width="2" stroke-linecap="round"/><path d="M233 148h114M233 159h79" stroke="#c6c1da" stroke-width="4" stroke-linecap="round"/>
+<rect x="201" y="179" width="18" height="18" rx="5" fill="#e3defa"/><path d="m206 188 3 3 6-7" stroke="#7865c6" stroke-width="2" stroke-linecap="round"/><path d="M233 188h98M233 199h63" stroke="#c6c1da" stroke-width="4" stroke-linecap="round"/>
+<rect x="201" y="219" width="18" height="18" rx="5" stroke="#c8c1e4" stroke-width="2"/><path d="M233 228h104M233 239h75" stroke="#d3cee4" stroke-width="4" stroke-linecap="round"/><path d="M331 49v40l10-7 10 7V49" fill="#a99cde"/>
+<g stroke="#ddd8f1" stroke-width="5" stroke-linecap="round"><path d="M146 81h19M146 119h19M146 157h19M146 195h19M146 233h19M146 271h19"/></g></g>
+<g transform="rotate(12 405 240)"><rect x="396" y="131" width="12" height="155" rx="5" fill="#dcc8a0"/><path d="m396 281 6 21 6-21" fill="#f0e1c6"/><path d="m400 295 2 7 2-7" fill="#303a52"/><rect x="396" y="131" width="12" height="17" rx="4" fill="#a9a0d7"/><path d="M400 152v126" stroke="#fff" stroke-opacity=".4" stroke-width="2"/></g>
+<g transform="rotate(9 115 256)"><rect x="64" y="215" width="108" height="87" rx="9" fill="#eee3c9"/><path d="M81 236h64M81 248h50M81 260h58" stroke="#b6a689" stroke-width="3" stroke-linecap="round"/><path d="m130 277 5 5 11-13" stroke="#8f9671" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+<circle cx="437" cy="85" r="25" fill="#d8d4f4"/><path d="m437 71 3.5 10.5L451 85l-10.5 3.5L437 99l-3.5-10.5L423 85l10.5-3.5z" fill="#8170cb"/>
+<path d="m97 114 2.5 7.5 7.5 2.5-7.5 2.5L97 134l-2.5-7.5L87 124l7.5-2.5z" fill="#c2b6ee"/><circle cx="444" cy="278" r="4" fill="#b5a5dc"/><circle cx="118" cy="78" r="3" fill="#b5a5dc"/>
+</svg>

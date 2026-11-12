@@ -1,91 +1,55 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      crossorigin="anonymous"
-    />
-
-    <title>{% block title %}Home{% endblock %}</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbar"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav">
-          {% if user.is_authenticated %}
-          <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-          {% else %}
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
-          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
-          {% endif %}
-        </div>
-      </div>
-    </nav>
-
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category ==
-    'error' %}
-    <div class="alert alert-danger alter-dismissable fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
+{% from 'icons.html' import icon %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171e38">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="description" content="A little space for your big ideas. Capture and keep your personal notes with Noted.">
+  <title>{% block title %}Your notebook{% endblock %} · Noted</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='index.js') }}" defer></script>
+</head>
+<body class="{% if user.is_authenticated %}workspace-body{% else %}auth-body{% endif %}">
+<a href="#main" class="skip-link">Skip to content</a>
+{% if user.is_authenticated %}
+  <aside class="sidebar" aria-label="Notebook navigation">
+    <a class="brand" href="{{ url_for('views.home') }}"><span class="brand-mark">{{ icon('note') }}</span>noted<span class="brand-dot">.</span></a>
+    <div class="sidebar-section">WORKSPACE</div>
+    <a class="side-link active" href="{{ url_for('views.home') }}">{{ icon('grid') }} All notes</a>
+    <a class="side-link" href="{{ url_for('views.home') }}#new-note">{{ icon('plus') }} Write a note</a>
+    <div class="sidebar-tip"><span class="tip-icon">{{ icon('spark') }}</span><strong>Room for every idea.</strong><p>The small thoughts today.<br>The big plans for tomorrow.</p></div>
+    <div class="account">
+      <span class="avatar">{{ user.first_name[:1]|upper }}</span>
+      <div class="account-name"><strong>{{ user.first_name }}</strong><span>Personal notebook</span></div>
+      <form method="post" action="{{ url_for('auth.logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="icon-button" aria-label="Log out" title="Log out">{{ icon('logout') }}</button>
+      </form>
     </div>
-    {% else %}
-    <div class="alert alert-success alter-dismissable fade show" role="alert">
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  </aside>
+  <div class="workspace">
+    <header class="workspace-bar"><span>Workspace <span class="breadcrumb-separator">/</span> <strong>All notes</strong></span><span class="private-badge">{{ icon('lock') }} Only you</span></header>
+{% else %}
+  <header class="auth-nav">
+    <a class="brand" href="{{ url_for('auth.login') }}"><span class="brand-mark">{{ icon('note') }}</span>noted<span class="brand-dot">.</span></a>
+    {% if request.endpoint == 'auth.sign_up' %}<span>Already have an account? <a href="{{ url_for('auth.login') }}">Log in {{ icon('arrow') }}</a></span>
+    {% else %}<span>New around here? <a href="{{ url_for('auth.sign_up') }}">Create an account {{ icon('arrow') }}</a></span>{% endif %}
+  </header>
+{% endif %}
+<main id="main" class="{% if user.is_authenticated %}workspace-main{% else %}auth-main{% endif %}">
+  <div class="messages" aria-live="polite">
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="alert {{ 'alert-error' if category == 'error' else 'alert-success' }}" role="{{ 'alert' if category == 'error' else 'status' }}">
+      {{ icon('close' if category == 'error' else 'check') }}<span>{{ message }}</span>
+      <button type="button" class="icon-button dismiss-alert" aria-label="Dismiss message">{{ icon('close') }}</button>
     </div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
-
-    <div class="container">{% block content %} {% endblock %}</div>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-
-{% block javascript %}
-    <script type="text/javascript">
-      function deleteNote(noteId) {
-  fetch("/delete-note", {
-    method: "POST",
-    body: JSON.stringify({ noteId: noteId }),
-  }).then((_res) => {
-    window.location.href = "/";
-  });
-  }
-</script>
-{% endblock %}
-  </body>
+  {% endfor %}
+  </div>
+  {% block content %}{% endblock %}
+</main>
+{% if user.is_authenticated %}</div>{% endif %}
+</body>
 </html>

@@ -1,0 +1,15 @@
+{% macro icon(name) -%}
+{% set paths = {
+'note': 'M8 3h8l4 4v14H4V3h4 M14 3v6h6 M8 13h8 M8 17h5',
+'grid': 'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',
+'plus': 'M12 5v14 M5 12h14',
+'arrow': 'M5 12h14 M13 6l6 6-6 6',
+'logout': 'M9 4H4v16h5 M10 12h11 M16 7l5 5-5 5',
+'lock': 'M6 11h12v10H6z M8 11V7a4 4 0 0 1 8 0v4',
+'trash': 'M3 6h18 M9 6V3h6v3 M5 6l1 15h12l1-15 M10 10v7 M14 10v7',
+'check': 'M5 12l4 4L19 6',
+'close': 'M6 6l12 12 M6 18L18 6',
+'spark': 'M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z'
+} %}
+<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{ paths[name] }}"/></svg>
+{%- endmacro %}
