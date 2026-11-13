@@ -1,0 +1,53 @@
+# Include only the files needed to run the application.
+# Everything else (Git history, virtual environments, docs, tests, etc.) stays out.
+**
+!requirements.txt
+!main.py
+!website/
+!website/**
+
+# Exclude local or generated files even if they are inside website/.
+**/.git
+**/.venv
+**/venv
+**/env
+**/__pycache__
+**/*.py[cod]
+**/*.egg-info
+
+# SQLite databases, local user data, and backups.
+**/instance
+**/data
+**/*.db
+**/*.db-*
+**/*.sqlite
+**/*.sqlite-*
+**/*.sqlite3
+**/*.sqlite3-*
+**/*.bak
+
+# Environment files and credentials must be supplied separately at runtime.
+**/.env
+**/.env.*
+**/*.env
+**/secrets
+**/.aws
+**/.ssh
+**/*.pem
+**/*.key
+**/*.pfx
+**/*.p12
+
+# Logs, temporary files, test output, and editor metadata.
+**/*.log
+**/*.tmp
+**/*~
+**/tests
+**/.pytest_cache
+**/.artifacts
+**/htmlcov
+**/.coverage*
+**/.idea
+**/.vscode
+**/.DS_Store
+**/Thumbs.db
